@@ -1,11 +1,16 @@
-const primeNumbers = (n) => {
-    const result = [];
+const primeNumbers = (num) => {
+    const seive = [];
+    const primes = [];
 
-    for (let i = 2; i <= n; i++) {
-        result.push(i);
+    for (let i = 2; i <= num; i++) {
+        if (!seive[i]) {
+            primes.push(i);
+            for (let j = i * i; j <= num; j += i) {
+                seive[j] = true;
+            }
+        }
     }
-
-    for (let j = 0; j < result.length; j++) {
-
-    }
+    return primes;
 }
+
+console.log(primeNumbers(100))
